@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO APP</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <video autoplay muted loop id="myVideo">
+        <source
+          src="/VIDEO/video1.webm"
+          type="video/mp4"
+          width="100%"
+          height="100%"
+        />
+      </video>
+      <div class="container">
+        <h1>To-Do App</h1>
+        <div class="proggresh-main">
+          <div class="progress">
+            <p>Total Task !</p>
+          </div>
+          <div class="task_no"><%=todolength%></div>
+        </div>
+
+        <% if (typeof oldData !== "undefined") { %>
+        <!-- Edit Task -->
+        <form
+          class="input_task_main"
+          method="post"
+          action="/editTodo/<%= oldData.id %>"
+        >
+          <div class="input_task">
+            <input type="text" name="task" value="<%= oldData.task %>" />
+          </div>
+          <button class="task_add_button" type="submit">
+            <i class="fa-solid fa-pen fa-fade" style="font-size: 1.1rem"></i>
+          </button>
+        </form>
+        <% } else { %>
+        <!-- Add Task -->
+        <form class="input_task_main" method="post" action="/addTodo">
+          <div class="input_task">
+            <input type="text" placeholder="Add a new task..." name="task" />
+          </div>
+          <button class="task_add_button" type="submit">
+            <i class="fa-solid fa-plus fa-flip"></i>
+          </button>
+        </form>
+        <% } %>
+        <div class="task_list_main">
+          <!-- dynamic to-do-list -->
+          <% todo.forEach((val)=> {%>
+          <div class="show_task">
+            <div class="task_list">
+              <div class="check_todo"></div>
+              <div class="task"><%= val.task%></div>
+            </div>
+            <div class="action_bitton_main">
+              <a href="/editTodo/<%=val.id%>">
+                <button class="edit_button">
+                  <i class="fa-solid fa-pen fa-fade"></i>
+                </button>
+              </a>
+              <a href="/deleteTodo/<%=val.id%>">
+                <button class="delete_button">
+                  <i class="fa-solid fa-trash-can fa-shake"></i>
+                </button>
+              </a>
+            </div>
+          </div>
+          <% })%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
