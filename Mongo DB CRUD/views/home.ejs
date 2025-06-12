@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD In mongodb</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+      <div class="container">
+      <h2>Create Account</h2>
+      <form action="/getData" method="post">
+        <div class="row">
+          <div class="form-group">
+            <label for="fname">First name *</label>
+            <input
+              type="text"
+              name="FristName"
+              placeholder="enter your first name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input
+              type="text"
+              placeholder="enter your last name"
+              name="LastName"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="enter your email"
+            name="Email"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="enter your password"
+              name="Password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm Password *</label>
+            <input
+              type="password"
+              id="confirm"
+              placeholder="enter your password again"
+              name="ConfirmPassword"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Gender:</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Gender" value="Male" /> Male</label>
+              <label><input type="radio" name="Gender" value="Female" /> Female</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Hobbies</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="Hobby" value="Music" /> Music</label>
+              <label><input type="checkbox" name="Hobby" value="Sports" /> Sports</label>
+              <label><input type="checkbox" name="Hobby" value="Travel" /> Travel</label>
+              <label><input type="checkbox" name="Hobby" value="Movies" /> Movies</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="incomeSource">Source of Income</label>
+            <select id="incomeSource" name="SourseOfIncome">
+              <option value="">--Select Options--</option>
+              <% let incomeSource= ["Employed", "Self-employed", "Student", "Unemployed", "BPL"]; %>
+              <% incomeSource.map((val)=>{ %>
+                <option value="<%=val%>"><%=val%></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Income</label>
+            <div class="range-group">
+              <input type="range" min="0" max="50000" step="500" name="Income" />
+              <span>50K</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Upload Profile Picture</label>
+            <input type="file" name="ProfilePicture" />
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="age" name="Age" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" rows="3" name="Bio"></textarea>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn">Create</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="alldata">
+      <h1>All Account Details</h1>
+      <div class="show_data">
+        <table>
+          <thead>
+            <tr>
+              <th>Sr.no</th>
+              <th>FristName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Gender</th>
+              <th>Hobby</th>
+              <th>SourseOfIncome</th>
+              <th>Income</th>
+              <th>ProfilePicture</th>
+              <th>Age</th>
+              <th>Bio</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% allData.map((val, i) => { %>
+              <tr>
+                <td><%= i + 1 %>.</td>
+                <td><%= val.FristName %></td>
+                <td><%= val.LastName %></td>
+                <td><%= val.Email %></td>
+                <td><%= val.Password %></td>
+                <td><%= val.Gender %></td>
+                <td><%= val.Hobby %></td>
+                <td><%= val.SourseOfIncome %></td>
+                <td><%= val.Income %></td>
+                <td><img src="" alt="" class="user_img"></td>
+                <td><%= val.Age %></td>
+                <td><%= val.Bio %></td>
+                <td>
+                  <a href="/editData?id=<%= val.id %>">
+                    <button class="actionButton">Edit</button>
+                  </a>
+                
+                  <a href="/deteleData?id=<%= val.id %>">
+                    <button class="actionButton">Delete</button>
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

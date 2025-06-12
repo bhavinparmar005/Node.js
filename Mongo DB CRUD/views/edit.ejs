@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Edit Account</h2>
+      <form action="/editData?id=<%=currentData.id%>" method="post">
+        <div class="row">
+          <div class="form-group">
+            <label for="fname">First name *</label>
+            <input
+              type="text"
+              name="FristName"
+              placeholder="enter your first name"
+              value="<%=currentData.FristName%>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input
+              type="text"
+              placeholder="enter your last name"
+              name="LastName"
+              value="<%=currentData.LastName%>"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="enter your email"
+            value="<%=currentData.Email%>"
+            name="Email"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="enter your password"
+              name="Password"
+              value="<%=currentData.Password%>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm Password *</label>
+            <input
+              type="password"
+              id="confirm"
+              placeholder="enter your password again"
+                value="<%=currentData.ConfirmPassword%>"
+              name="ConfirmPassword"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Gender:</label>
+            <div class="radio-group">
+              <label
+                ><input type="radio" name="Gender" value="Male"  <%= currentData.Gender == "Male" ? "checked" : "" %>/> Male</label
+              >
+              <label
+                ><input type="radio" name="Gender"  value="Female"  <%= currentData.Gender === "Female" ? "checked" : "" %> />
+                Female</label
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Hobbies</label>
+            <div class="checkbox-group">
+              <label
+                ><input type="checkbox" name="Hobby" value="Music"  <%= currentData.Hobby.includes("Music") ? "checked" : "" %> />
+                Music</label
+              >
+              <label
+                ><input type="checkbox" name="Hobby" value="Sports"  <%= currentData.Hobby.includes("Sports") ? "checked" : "" %>/>
+                Sports</label
+              >
+              <label
+                ><input type="checkbox" name="Hobby" value="Travel" <%= currentData.Hobby.includes("Travel") ? "checked" : "" %> />
+                Travel</label
+              >
+              <label
+                ><input type="checkbox" name="Hobby" value="Movies" <%= currentData.Hobby.includes("Movies") ? "checked" : "" %> />
+                Movies</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="incomeSource">Source of Income</label>
+            <select id="incomeSource" name="SourseOfIncome" >
+              <option value="">--Select Options--</option>
+              <% let incomeSource= ["Employed", "Self-employed"
+              ,"Student","Unemployed","BPL"];%> <% incomeSource.map((val)=>{%>
+              <option value="<%=val%>"  <%=currentData.SourseOfIncome == val ? "selected" : ""%>  ><%=val%></option>
+
+              <%})%>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Income</label>
+            <div class="range-group">
+              <input
+                type="range"
+                min="0"
+                max="50000"
+                step="500"
+                name="Income"
+                value="<%=currentData.Income%>"
+              />
+              <span>20K</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Upload Profile Picture</label>
+            <input type="file" name="ProfilePicture" value="<%=currentData.ProfilePicture%>" />
+          </div>
+
+
+          
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="age" name="Age"  value="<%=currentData.Age%>"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" rows="3" name="Bio" ><%=currentData.Bio%></textarea>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn">Edit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
