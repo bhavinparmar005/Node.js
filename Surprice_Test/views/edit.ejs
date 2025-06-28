@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+   <style>
+       * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+   </style>
+</head>
+<body>
+    <h1>edit</h1>
+     <form action="/update/?id=<%=singleData.id%>" method="post" enctype="multipart/form-data">
+      <table border="1" cellspacing="0">
+        <tr>
+          <td>movie name</td>
+          <td>
+            <input type="text" name="title" placeholder="Enter a movie name"  value="<%=singleData.title%>"/>
+          </td>
+        </tr>
+        <tr>
+          <td>image</td>
+          <td>
+            <input type="file" name="image" /> <img src="/<%=singleData.image%>" alt="" width="80px" height="80px">
+          </td>
+        </tr>
+        <tr>
+          <td><button type="submit">submit</button></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

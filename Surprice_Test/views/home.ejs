@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+  </style>
+  <body>
+    <h1>add</h1>
+    <form action="/addData" method="post" enctype="multipart/form-data">
+      <table border="1" cellspacing="0">
+        <tr>
+          <td>movie name</td>
+          <td>
+            <input type="text" name="title" placeholder="Enter a movie name" />
+          </td>
+        </tr>
+        <tr>
+          <td>image</td>
+          <td>
+            <input type="file" name="image" />
+          </td>
+        </tr>
+        <tr>
+          <td><button type="submit">submit</button></td>
+        </tr>
+      </table>
+    </form>
+
+    <h1>Movie list</h1>
+
+    <table border="1" cellspacing="0" width="50%">
+      <thead>
+        <tr>
+          <th>sr.no</th>
+          <th>image</th>
+          <th>title</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% allData.map((val,index)=>{%> 
+          
+          <tr>
+            <td><%=index+1%></td>
+            <td><img src="<%=val.image%>" alt="" width="80px" height="80px"></td>
+            <td><%=val.title%></td>
+            <td> <a href="/editData/?id=<%=val.id%>"> <button>Edit</button></a>  || <a href="/deleteData/?id=<%=val.id%>"> <button>Delete</button></a></td>
+          </tr>
+          
+          <% })%>
+      </tbody>
+    </table>
+  </body>
+</html>
