@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NXT_Movie</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <!-- navbar  -->
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand fs-3" href="#">NXT_Movie</a>
+          <button
+            class="btn btn-outline-light d-lg-none ms-auto"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar"
+          >
+            ☰
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-light" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5 text-light" href="/addmovie"
+                  >Add-Movie</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Sidebar for Mobile -->
+      <div
+        class="offcanvas offcanvas-end bg-dark text-white"
+        tabindex="-1"
+        id="sidebar"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">NXT_Movie</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="offcanvas"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/addmovie">Add-Movie</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- slider  -->
+
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="1500"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="4"
+          aria-label="Slide 5"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="5"
+          aria-label="Slide 6"
+        ></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="/image/slider_image/slide_1.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/image/slider_image/slide_2.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/image/slider_image/slide_3.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 3"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/image/slider_image/slide_4.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 4"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/image/slider_image/slide_5.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 5"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="/image/slider_image/slide_6.jpg"
+            class="d-block w-100 img_hight"
+            alt="Slide 6"
+          />
+        </div>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- title for Top Seller books-->
+
+    <h1 class="mt-3 text-center text-black-50">Top Trending Movies</h1>
+
+    <!--Top Seller books card  -->
+    <div class="container my-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Sample Card 1 -->
+        <div class="col">
+          <div class="card h-auto card_hover">
+            <img
+              src="/image/dummyMovieImage/Kaabil.png"
+              class="card-img-top"
+              alt="Wings of Fire"
+              height="400px"
+              width="250px"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Kaabil</h5>
+              <p class="card-text">
+                <strong>directorName:</strong> Sanjay Gupta<br />
+                <strong>Release Date:</strong> 2017-01-25<br />
+                <strong>Rating:</strong> 7.1<br />
+                <strong>Description:</strong> A blind man takes the law into his
+                own hands when his wife is assaulted and justice is denied,
+                using intelligence and inner strength to exact revenge.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Card 2 -->
+        <div class="col">
+          <div class="card h-auto card_hover">
+            <img
+              src="/image/dummyMovieImage/Brahmastra.jpg"
+              class="card-img-top"
+              alt="The Immortals of Meluha"
+              height="400px"
+              width="250px"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Brahmāstra: Part One - Shiva</h5>
+              <p class="card-text">
+                <strong>directorName:</strong> Ayan Mukerji<br />
+                <strong>Release Date:</strong> 2022-09-09<br />
+                <strong>Rating:</strong> 5.6<br />
+                <strong>Description:</strong> Shiva, a young man with mysterious
+                powers, embarks on a journey to discover his connection to a
+                secret society guarding ancient astras (weapons of energy).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Card 3 -->
+        <div class="col">
+          <div class="card h-auto card_hover">
+            <img
+              src="/image/dummyMovieImage/Raabta.jpg"
+              class="card-img-top"
+              alt="The White Tiger"
+              height="400px"
+              width="250px"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Raabta</h5>
+              <p class="card-text">
+                <strong>directorName:</strong> Dinesh Vijan<br />
+                <strong>Release Date:</strong> 2017-06-09<br />
+                <strong>Rating:</strong> 4.6<br />
+                <strong>Description:</strong> In a story of reincarnation and
+                timeless love, two lovers meet again in a different life, only
+                to find that destiny has plans rooted in the past.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- title for All books-->
+    <h1 class="mt-3 text-center text-black-50">All Movies</h1>
+    <!-- Dynamic book card -->
+    <div class="container my-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- dynamic  Cards -->
+
+      </div>
+    </div>
+
+    <!-- footer  -->
+
+    <footer class="bg-dark text-light pt-4 mt-5">
+      <div class="container text-center text-md-start">
+        <div class="row">
+          <!-- About Section -->
+          <div class="col-md-4 mb-3">
+            <h5>About Us</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
+              dapibus leo nec ornare diam.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-4 mb-3 quick-links">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-light text-decoration-none">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-light text-decoration-none">Services</a>
+              </li>
+              <li>
+                <a href="#" class="text-light text-decoration-none">Contact</a>
+              </li>
+              <li>
+                <a href="#" class="text-light text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Media Icons -->
+          <div class="col-md-4 mb-3 text-center social-icons">
+            <h5>Follow Us</h5>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-instagram fs-2"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-facebook fs-2"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-linkedin fs-2"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-twitter fs-2"></i
+            ></a>
+            <a href="#" class="text-light me-3"
+              ><i class="bi bi-youtube fs-2"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center py-3 bg-secondary">
+        © 2025 Your NXT_Movie | All Rights Reserved
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

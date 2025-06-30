@@ -1,0 +1,33 @@
+
+        <% allbooks.map((val)=>{%>
+
+        <div class="col">
+          <div class="card h-auto card_hover">
+            <img
+              src="<%=val.image%>"
+              class="card-img-top"
+              alt="<%=val.image%>"
+              height="250px"
+              width="250px"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold"><%=val.title%></h5>
+              <p class="card-text">
+                <strong>Author:</strong> <%=val.author%><br />
+                <strong>Price:</strong> ₹<%=val.price%> <br />
+                <strong>Release Date:</strong> <%=val.releaseDate%><br />
+                <strong>Description:</strong> <%=val.description%>
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="/editbook/?id=<%=val.id%>" class="btn btn-primary">
+                  <i class="bi bi-pencil me-2"></i>Edit Post
+                </a>
+                <a href="/deletebook/?id=<%=val.id%>" class="btn btn-danger">
+                  <i class="bi bi-trash me-2"></i>Delete Post
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% })%>

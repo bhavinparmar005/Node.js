@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add-Movie</title>
+    <link rel="stylesheet" href="/CSS/Add_movie.css" />
+  </head>
+  <body>
+    <form class="glass-form">
+      <h2>Add Movie</h2>
+
+      <div class="form-group">
+        <label for="image">Movie Image</label>
+        <img id="preview" src="" />
+        <label class="image-upload" for="image">
+          Click to choose image
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            onchange="previewImage(event)"
+            required
+          />
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Movie Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Enter Movie title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="author">Movie Director Name</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          placeholder="Enter Director name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Movie Rating</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Enter Movie Rating"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="releaseDate">Movie Release Date</label>
+        <input type="date" id="releaseDate" name="releaseDate" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Movie Description</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Enter book description"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Add Movie</button>
+    </form>
+
+    <script src="/JS/index.js"></script>
+  </body>
+</html>
