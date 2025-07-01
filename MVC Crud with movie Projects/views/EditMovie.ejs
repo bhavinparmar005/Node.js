@@ -1,12 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Movie</title>
-</head>
-<body>
-    <h1>edit</h1>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit-Movie</title>
+    <link rel="stylesheet" href="/CSS/Add_movie.css" />
+  </head>
+  <body>
+    <form class="glass-form" action="/updatemovie/?id=<%=editData.id%>" method="post" enctype="multipart/form-data">
+      <h2>Edit Movie</h2>
+
+      <div class="form-group">
+        <label for="image">Movie Image</label>
+        <img id="preview" src="/<%=editData.image%>" />
+        <label class="image-upload" for="image">
+          Click to choose image
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            onchange="previewImage(event)"
+           
+          />
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Movie Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%=editData.title%>"
+          placeholder="Enter Movie title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="director">Movie Director Name</label>
+        <input
+          type="text"
+          id="author"
+          name="director"
+          value="<%=editData.director%>"
+          placeholder="Enter Director name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Movie Rating</label>
+        <input
+          type="text"
+          id="price"
+          name="rating"
+          value="<%=editData.rating%>"
+          placeholder="Enter Movie Rating"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="releaseDate">Movie Release Date</label>
+        <input type="date" id="releaseDate" name="releaseDate" value="<%=editData.releaseDate%>" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Movie Description</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Enter book description"
+          required
+        ><%=editData.description%></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Edit movie</button>
+    </form>
+
+    <script>
+      function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById("preview");
+
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            // preview.style.display = "block";
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+  </body>
 </html>

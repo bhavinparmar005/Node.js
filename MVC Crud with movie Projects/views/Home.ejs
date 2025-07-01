@@ -197,7 +197,7 @@
             <img
               src="/image/dummyMovieImage/Kaabil.png"
               class="card-img-top"
-              alt="Wings of Fire"
+              alt="Kaabil"
               height="400px"
               width="250px"
             />
@@ -221,7 +221,7 @@
             <img
               src="/image/dummyMovieImage/Brahmastra.jpg"
               class="card-img-top"
-              alt="The Immortals of Meluha"
+              alt="Brahmāstra: Part One - Shiva"
               height="400px"
               width="250px"
             />
@@ -245,7 +245,7 @@
             <img
               src="/image/dummyMovieImage/Raabta.jpg"
               class="card-img-top"
-              alt="The White Tiger"
+              alt="Raabta"
               height="400px"
               width="250px"
             />
@@ -272,6 +272,40 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <!-- dynamic  Cards -->
 
+        <% movieData.map((val)=>{%>
+
+        <div class="col">
+          <div class="card h-auto card_hover">
+            <img
+              src="<%=val.image%>"
+              class="card-img-top"
+              alt="<%=val.image%>"
+              height="400px"
+              width="250px"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold"><%=val.title%></h5>
+              <p class="card-text">
+                <strong>directorName:</strong> <%=val.director%><br />
+                <strong>Release Date:</strong> <%=val.releaseDate%><br />
+                <strong>Rating:</strong>
+                <i class="bi bi-star-fill" style="color: lightblue"></i>
+                <%=val.rating%> <br />
+                <strong>Description:</strong> <%=val.description%>
+              </p>
+              <div class="d-flex justify-content-between">
+                <a href="/editmovie/?id=<%=val.id%>" class="btn btn-primary">
+                  <i class="bi bi-pencil me-2"></i>Edit Post
+                </a>
+                <a href="/deletemovie/?id=<%=val.id%>" class="btn btn-danger">
+                  <i class="bi bi-trash me-2"></i>Delete Post
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% })%>
       </div>
     </div>
 

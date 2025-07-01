@@ -10,17 +10,17 @@
   content: "";
   width: 0;
   height: 2px;
-  background: #ffcc00;
+  background:lightblue;
   display: block;
   /* margin: auto; */
   transition: 0.5s;
 }
 .nav-link:hover {
-  color: #ffcc00 !important;
+  color: lightblue !important;
 }
 .navbar-brand:hover {
   transition: 0.5s;
-  color: #ffcc00 !important;
+  color: lightblue !important;
 }
 .nav-link:hover::after {
   width: 100%;
@@ -70,7 +70,7 @@
 }
 .social-icons a:hover {
   transform: scale(1.2);
-  color: #ffcc00 !important; /* Gold color effect */
+  color: lightblue !important; /* Gold color effect */
 }
 
 /* Quick Links Hover */
@@ -79,14 +79,14 @@
   transition: color 0.3s ease-in-out;
 }
 .quick-links a:hover {
-  color: #ffcc00 !important; /* Gold color effect */
+  color:lightblue !important; /* Gold color effect */
 }
 .quick-links a::after {
   content: "";
   display: block;
   width: 0;
   height: 2px;
-  background: #ffcc00;
+  background: lightblue;
   transition: width 0.3s;
   position: absolute;
   left: 0;
