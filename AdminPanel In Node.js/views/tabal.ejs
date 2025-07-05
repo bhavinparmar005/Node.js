@@ -1,0 +1,65 @@
+<%- include("header") %>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3">
+          <h6 class="text-white text-capitalize ps-3">Product Table</h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <div class="table-responsive p-0">
+          <table class="table align-items-center justify-content-center mb-0">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+        <tbody>
+  <% if (addProducts.length === 0) { %>
+    <tr>
+      <td colspan="6" class="text-center text-danger py-4 fs-5">
+        🚫 Data Not Found
+      </td>
+    </tr>
+  <% } else { %>
+    <% addProducts.map((val, index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td>
+          <img
+            src="/Uploads/<%= val.image %>"
+            alt="Product Image"
+            class="img-thumbnail"
+            style="width: 80px; height: 80px; object-fit: cover"
+          />
+        </td>
+        <td><%= val.productName %></td>
+        <td>₹ <%= val.price %></td>
+        <td><%= val.description %></td>
+        <td>
+          <a href="/editProduct/?id=<%= val.id %>" class="btn btn-sm btn-warning me-2">
+            <span class="material-symbols-rounded align-middle">edit</span>
+          </a>
+          <a href="/deleteProduct/?id=<%= val.id %>" class="btn btn-sm btn-danger">
+            <span class="material-symbols-rounded align-middle">delete</span>
+          </a>
+        </td>
+      </tr>
+    <% }) %>
+  <% } %>
+</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("footer") %>

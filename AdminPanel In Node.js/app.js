@@ -5,7 +5,8 @@ const path = require("path");
 const db = require("./Config/db");
 
 app.set("view engine", "ejs");
-app.use("/", express.static(path.join(__dirname, "/assest")));
+app.use(express.urlencoded({ extended: true }));
+app.use("/", express.static(path.join(__dirname, "/assets")));
 app.use("/Uploads", express.static(path.join(__dirname, "Uploads")));
 app.use("/", require("./Router/allrouter"));
 

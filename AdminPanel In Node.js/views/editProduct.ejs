@@ -1,0 +1,67 @@
+<%-include("header")%>
+
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header text-white text-center">
+      <h4 class="mb-0 fs-3">Edit Product</h4>
+    </div>
+    <div class="card-body">
+      <form action="/updateProduct/?id=<%=singleData.id%>" method="POST">
+        <div class="mb-3">
+          <label for="productName" class="form-label fs-5">Product Name</label>
+          <input
+            type="text"
+            name="productName"
+            value="<%=singleData.productName%>"
+            id="productName"
+            class="form-control border fs-5 ps-2"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label fs-5">Price (₹)</label>
+          <input
+            type="number"
+            name="price"
+            value="<%=singleData.price%>"
+            id="price"
+            class="form-control border fs-5 ps-2"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label fs-5">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            rows="4"
+            class="form-control border fs-5 ps-2"
+            required
+          >
+ <%=singleData.description%></textarea
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label fs-5">Upload Image</label>
+          <input
+            class="form-control border fs-5"
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 fs-5 p-3">
+          Edit Product
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%-include("footer")%>

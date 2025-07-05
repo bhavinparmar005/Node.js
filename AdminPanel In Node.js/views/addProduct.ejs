@@ -1,0 +1,88 @@
+<%- include("header") %>
+
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header text-white text-center ">
+      <h4 class="mb-0 fs-3">Add New Product</h4>
+    </div>
+    <div class="card-body">
+      <form action="/addNewProduct" method="POST">
+        <div class="mb-3">
+          <label for="productName" class="form-label fs-5">Product Name</label>
+          <input
+            type="text"
+            name="productName"
+            id="productName"
+            class="form-control border fs-5 ps-2"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label fs-5">Price (₹)</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            class="form-control border fs-5 ps-2"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label fs-5">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            rows="4"
+            class="form-control border fs-5 ps-2"
+            required
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label fs-5">Upload Image</label>
+          <input
+            class="form-control border fs-5"
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            onchange="previewImage(event)"
+            required
+          />
+        </div>
+
+        <!-- 🔍 Image Preview -->
+        <div class="mb-3 text-center">
+          <img
+            id="preview"
+            src="#"
+            alt="Image Preview"
+            class="img-fluid rounded shadow"
+            style="height: 200px; width: 200px; display: none;"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 fs-5 p-3">
+          Add Product
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- 🧠 Image Preview Script -->
+<script>
+  function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      const preview = document.getElementById("preview");
+      preview.src = reader.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+<%- include("footer") %>
