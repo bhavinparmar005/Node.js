@@ -3,7 +3,7 @@ const multer = require('multer');
 
 const path = require('path');
 
-const imagePath = '/Uploads/Product_Image';
+const imagePath = '/Uploads/Product_Image/';
 
 const allFilds = mongoose.Schema({
   productName: {
@@ -20,7 +20,7 @@ const allFilds = mongoose.Schema({
   },
   image: {
     type: String,
-    required: false,
+    required: true,
   },
 });
 

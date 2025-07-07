@@ -1,4 +1,7 @@
 const adminTbl = require("../Models/allData");
+const imageMiddlwear = require("../Models/allData");
+const fs = require("fs");
+const path = require("path");
 
 const dashboard = (req, res) => {
   res.render("dashboard");
@@ -38,32 +41,19 @@ const profile = (req, res) => {
   res.render("profile");
 };
 
-const addNewProduct = (req, res) => {
-  const { productName, price, description } = req.body;
-
-  // let image = "";
-
-  // if (req.file) {
-  //   image = adminTbl.addPath + "/" + req.file.filename;
-  // }
-
-  adminTbl.create({
-    productName,
-    price,
-    description,
-  });
-
-  res.redirect("/tables");
-};
-const updateProduct = async (req, res) => {
-  let id = req.query.id;
-  const { productName, price, description } = req.body;
-
+const addNewProduct = async (req, res) => {
   try {
-    await adminTbl.findByIdAndUpdate(id, {
+    const { productName, price, description } = req.body;
+    let image = "";
+    if (req.file) {
+      image = imageMiddlwear.addPath + req.file.filename;
+    }
+
+    await adminTbl.create({
       productName,
       price,
       description,
+      image,
     });
 
     res.redirect("/tables");
@@ -72,21 +62,47 @@ const updateProduct = async (req, res) => {
   }
 };
 
-
-const deleteProduct =async(req,res)=>{
+const updateProduct = async (req, res) => {
   let id = req.query.id;
+  const { productName, price, description } = req.body;
+  try {
+    let image = "";
+    if (req.file) {
+      image = imageMiddlwear.addPath + req.file.filename;
+      let oldImageDelete = await adminTbl.findById(id);
+      fs.unlinkSync(path.join(__dirname, "..", oldImageDelete.image));
 
- try {
-  await adminTbl.findByIdAndDelete(id)
+      await adminTbl.findByIdAndUpdate(id, {
+        productName,
+        price,
+        description,
+        image,
+      });
 
-  res.redirect("/tables");
- } catch (error) {
-  console.log(error)
- }
+      res.redirect("/tables");
+    } else {
+      await adminTbl.findByIdAndUpdate(id, {
+        productName,
+        price,
+        description,
+      });
+      res.redirect("/tables");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-
-}
-
+const deleteProduct = async (req, res) => {
+  let id = req.query.id;
+  try {
+    let deleteData = await adminTbl.findByIdAndDelete(id);
+    fs.unlinkSync(path.join(__dirname, "..", deleteData.image));
+    res.redirect("/tables");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
   dashboard,
@@ -98,5 +114,5 @@ module.exports = {
   profile,
   addNewProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };

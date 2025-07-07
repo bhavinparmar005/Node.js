@@ -1,12 +1,12 @@
 <%-include("header")%>
 
 <div class="container mt-5">
-  <div class="card shadow">
+  <div class="card shadow mb-5">
     <div class="card-header text-white text-center">
       <h4 class="mb-0 fs-3">Edit Product</h4>
     </div>
     <div class="card-body">
-      <form action="/updateProduct/?id=<%=singleData.id%>" method="POST">
+      <form action="/updateProduct/?id=<%=singleData.id%>" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="productName" class="form-label fs-5">Product Name</label>
           <input
@@ -39,9 +39,7 @@
             rows="4"
             class="form-control border fs-5 ps-2"
             required
-          >
- <%=singleData.description%></textarea
-          >
+          ><%=singleData.description%></textarea>
         </div>
 
         <div class="mb-3">
@@ -52,7 +50,19 @@
             name="image"
             id="image"
             accept="image/*"
-            required
+            onchange="previewImage(event)"
+          />
+        </div>
+
+        <!-- Preview of current image -->
+        <div class="mb-3">
+          <label class="form-label fs-5">Current Image Preview</label><br>
+          <img
+            id="preview"
+            src="<%= singleData.image %>"
+            alt="Product Image"
+            class="img-thumbnail"
+            style="max-height: 200px;"
           />
         </div>
 
@@ -63,5 +73,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      const output = document.getElementById("preview");
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
 
 <%-include("footer")%>
