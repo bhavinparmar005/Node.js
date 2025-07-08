@@ -2,6 +2,7 @@ const adminTbl = require("../Models/allData");
 const imageMiddlwear = require("../Models/allData");
 const fs = require("fs");
 const path = require("path");
+const signupTbl = require("../Models/signup");
 
 const dashboard = (req, res) => {
   res.render("dashboard");
@@ -104,6 +105,33 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const getsignData = async (req, res) => {
+  const { name, email, password } = req.body;
+  await signupTbl.create({
+    name,
+    email,
+    password,
+  });
+
+  res.redirect("/");
+};
+
+const signinData = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const findSignupData = await signupTbl.findOne({ email });
+
+    if (findSignupData.email == email && findSignupData.password == password) {
+      res.redirect("/dashboard");
+    } else {
+      res.redirect("/signup");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   dashboard,
   tables,
@@ -115,4 +143,6 @@ module.exports = {
   addNewProduct,
   updateProduct,
   deleteProduct,
+  getsignData,
+  signinData,
 };

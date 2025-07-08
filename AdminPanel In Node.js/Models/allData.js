@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const multer = require('multer');
+const multer = require("multer");
 
-const path = require('path');
+const path = require("path");
 
-const imagePath = '/Uploads/Product_Image/';
+const imagePath = "/Uploads/Product_Image/";
 
-const allFilds = mongoose.Schema({
+const allFilds =  mongoose.Schema({
   productName: {
     type: String,
     required: true,
@@ -25,18 +25,23 @@ const allFilds = mongoose.Schema({
 });
 
 
+
+
 const Filestorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname,"..",imagePath))
+    cb(null, path.join(__dirname, "..", imagePath));
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
+    cb(null, file.fieldname + "-" + Date.now());
+  },
+});
 
-allFilds.statics.upload = multer({ storage: Filestorage }).single('image');
+allFilds.statics.upload = multer({ storage: Filestorage }).single("image");
 allFilds.statics.addPath = imagePath;
 
 const adminTbl = mongoose.model("allData", allFilds);
 
+
+
 module.exports = adminTbl;
+
