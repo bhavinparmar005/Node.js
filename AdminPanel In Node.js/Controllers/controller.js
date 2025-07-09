@@ -112,7 +112,6 @@ const getsignData = async (req, res) => {
     email,
     password,
   });
-
   res.redirect("/");
 };
 
@@ -122,15 +121,24 @@ const signinData = async (req, res) => {
 
     const findSignupData = await signupTbl.findOne({ email });
 
+
+    // console.log(findSignupData)
+
     if (findSignupData.email == email && findSignupData.password == password) {
-      res.redirect("/dashboard");
+      res.cookie("secretData", findSignupData);
+     return res.redirect("/dashboard");
     } else {
-      res.redirect("/signup");
+     return res.redirect("/signup");
     }
   } catch (error) {
     console.log(error);
   }
 };
+
+const logout = (req,res)=>{
+  res.clearCookie("secretData")
+  return res.redirect("/")
+}
 
 module.exports = {
   dashboard,
@@ -145,4 +153,5 @@ module.exports = {
   deleteProduct,
   getsignData,
   signinData,
+  logout
 };
