@@ -1,10 +1,8 @@
-
-
-const auth = checkAdminAuth = (req, res, next) => {
+const chekforLogin = (req, res, next) => {
   if (req.cookies && req.cookies.secretData) {
-    return next(); 
+    return next();
   } else {
     return res.redirect("/");
   }
 };
-module.exports =auth
+module.exports = chekforLogin;

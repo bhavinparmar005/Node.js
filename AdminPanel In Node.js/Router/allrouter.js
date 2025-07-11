@@ -1,24 +1,22 @@
 const express = require("express");
-
 const imageMiddlwear = require("../Models/allData");
-const auth =require("../Middelware/Authentication")
-
+const controller = require("../Controllers/controller");
+const chekforLogin =require("../Middelware/chekforLogin")
+const chekforLogout =require("../Middelware/checkforLogout")
 const router = express.Router();
 
-const controller = require("../Controllers/controller");
-
-router.get("/signup", controller.signup); // render signup page
-router.get("/", controller.signin); // render a signin page
+router.get("/signup",chekforLogout, controller.signup); // render signup page
+router.get("/" ,chekforLogout,controller.signin); // render a signin page
 router.post("/getsignData", controller.getsignData); // signdata send to mongo db
 router.post("/signinData", controller.signinData); // create cookies and move next router
-router.get("/logout", auth,controller.logout);  // delete cookies and logout
-router.get("/dashboard",auth, controller.dashboard);
-router.get("/tables", auth, controller.tables);
-router.get("/addProduct",auth ,controller.addProduct);
-router.get("/editProduct",auth, controller.editProduct);
-router.get("/profile", auth,controller.profile);
-router.post("/addNewProduct",auth ,imageMiddlwear.upload, controller.addNewProduct);
-router.post("/updateProduct", auth,imageMiddlwear.upload, controller.updateProduct);
-router.get("/deleteProduct",auth ,controller.deleteProduct);
+router.get("/logout",controller.logout);  // delete cookies and logout
+router.get("/dashboard",chekforLogin, controller.dashboard); // render a dashboard
+router.get("/tables", chekforLogin, controller.tables);  // all data show in table
+router.get("/addProduct",chekforLogin ,controller.addProduct); // render add data form 
+router.get("/editProduct",chekforLogin, controller.editProduct); // render edit data form 
+router.get("/profile", chekforLogin,controller.profile); // render a profile page
+router.post("/addNewProduct",chekforLogin ,imageMiddlwear.upload, controller.addNewProduct); // add data in database
+router.post("/updateProduct", chekforLogin,imageMiddlwear.upload, controller.updateProduct);  // updata data in database
+router.get("/deleteProduct",chekforLogin ,controller.deleteProduct); // delete data in database
 
 module.exports = router;

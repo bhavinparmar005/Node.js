@@ -120,25 +120,25 @@ const signinData = async (req, res) => {
     const { email, password } = req.body;
 
     const findSignupData = await signupTbl.findOne({ email });
+    if (!findSignupData) {
+      return res.redirect("/signup");
+    }
 
-
-    // console.log(findSignupData)
-
+    res.cookie("secretData", findSignupData);
     if (findSignupData.email == email && findSignupData.password == password) {
-      res.cookie("secretData", findSignupData);
-     return res.redirect("/dashboard");
+      res.redirect("/dashboard");
     } else {
-     return res.redirect("/signup");
+      res.redirect("/signup");
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-const logout = (req,res)=>{
-  res.clearCookie("secretData")
-  return res.redirect("/")
-}
+const logout = (req, res) => {
+  res.clearCookie("secretData");
+  return res.redirect("/");
+};
 
 module.exports = {
   dashboard,
@@ -153,5 +153,5 @@ module.exports = {
   deleteProduct,
   getsignData,
   signinData,
-  logout
+  logout,
 };
