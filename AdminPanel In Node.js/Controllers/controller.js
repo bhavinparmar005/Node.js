@@ -39,8 +39,27 @@ const editProduct = async (req, res) => {
   }
 };
 const profile = (req, res) => {
-  res.render("profile");
+ const adminData = req.cookies.secretData ;
+  res.render("profile",{adminData});
 };
+
+const updateProfile =(req,res)=>{
+  const { name, email } = req.query;
+res.render("updateProfile", { name, email });
+  
+} 
+
+const updateProfileNewData = (req,res)=>{
+const {name,email,bio}=req.body
+
+console.log(`
+  name :- ${name}
+  email :- ${email}
+  bio :- ${bio}
+  `)
+
+res.redirect("profile")
+}
 
 const addNewProduct = async (req, res) => {
   try {
@@ -140,6 +159,18 @@ const logout = (req, res) => {
   return res.redirect("/");
 };
 
+const changePasswordPage =(req,res)=>{
+  res.render("changePassword")
+}
+
+const updatePassword =(req,res)=>{
+   const { currentPassword, newPassword, confirmPassword } = req.body;
+
+   console.log(req.body)
+
+   res.redirect("/dashboard")
+}
+
 module.exports = {
   dashboard,
   tables,
@@ -154,4 +185,8 @@ module.exports = {
   getsignData,
   signinData,
   logout,
+  updateProfile,
+  updateProfileNewData,
+  changePasswordPage,
+  updatePassword
 };

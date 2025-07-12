@@ -1,0 +1,64 @@
+<%- include("header") %>
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center  text-white">
+          <h4>Update Profile</h4>
+        </div>
+        <div class="card-body">
+          <form action="/updateProfileNewData" method="POST">
+            <!-- Image Upload -->
+            <div class="mb-3 text-center">
+              <label for="image" class="form-label">Profile Image</label><br>
+              <input type="file" name="image" class="form-control border ps-2" id="image">
+            </div>
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input 
+                type="text" 
+                class="form-control border ps-2" 
+                id="name" 
+                name="name" 
+                value="<%=name%>" 
+                required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                class="form-control border ps-2" 
+                id="email" 
+                name="email" 
+                value="<%=email %>" 
+                required>
+            </div>
+
+            <!-- Bio -->
+            <div class="mb-3">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea 
+                name="bio" 
+                id="bio" 
+                rows="4" 
+                class="form-control border ps-2"
+                placeholder="Tell us about yourself..."></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("footer") %>

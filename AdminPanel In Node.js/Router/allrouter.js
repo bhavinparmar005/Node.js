@@ -14,9 +14,13 @@ router.get("/dashboard",chekforLogin, controller.dashboard); // render a dashboa
 router.get("/tables", chekforLogin, controller.tables);  // all data show in table
 router.get("/addProduct",chekforLogin ,controller.addProduct); // render add data form 
 router.get("/editProduct",chekforLogin, controller.editProduct); // render edit data form 
-router.get("/profile", chekforLogin,controller.profile); // render a profile page
 router.post("/addNewProduct",chekforLogin ,imageMiddlwear.upload, controller.addNewProduct); // add data in database
 router.post("/updateProduct", chekforLogin,imageMiddlwear.upload, controller.updateProduct);  // updata data in database
 router.get("/deleteProduct",chekforLogin ,controller.deleteProduct); // delete data in database
+router.get("/profile", chekforLogin,controller.profile); // render a profile page
+router.get("/updateProfile", chekforLogin,controller.updateProfile) // render a update profile page
+router.post("/updateProfileNewData",controller.updateProfileNewData) // add profile data bio and image
+router.get("/changePassword" , chekforLogin,controller.changePasswordPage) // render a change password page
+router.post("/updatePassword" ,controller.updatePassword) // update password for admin 
 
 module.exports = router;
